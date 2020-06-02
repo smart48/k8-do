@@ -1,0 +1,26 @@
+do_token = ""
+spaces_access_id = ""
+spaces_secret_key = ""
+region = "ams3"
+email = "john@doe.com"
+state_bucket = "tfstate"
+# helm_enabled "true"
+helm_nginx_ingress_classes = ["nginx-class-1"]
+helm_nginx_ingress_replica_counts = ["2"]
+kubernetes_name = "smt1"
+name = "smt1"
+# kubernetes_context "smt1"
+kubernetes_version = "1.17.5-do.0"
+kubernetes_node_size = "s-1vcpu-2gb"
+# kubernetes_node_count = ""
+kubernetes_autoscale = "true"
+kubernetes_min_nodes = 1
+kubernetes_max_nodes = 2
+mysql_version ="8"
+mysql_instances = ["smt1_mysql"]
+mysql_node_sizes = ["s-1vcpu-2g"]
+mysql_node_counts = ["1"]
+redis_version = "5"
+redis_instances = ["smt1_redis"]
+redis_node_sizes = ["s-1vcpu-2g"]
+redis_node_counts = ["1"]
