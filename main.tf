@@ -30,6 +30,6 @@ provider "helm" {
 
 locals {
   nginx_ingress_version      = "1.26.2"
-  cert_manager_version       = "0.11.0"
+  cert_manager_version       = "0.13.0"
   socat_tunneler_version     = "0.1.0"
 }

@@ -117,22 +117,221 @@ Terraform will perform the following actions:
       + urn                = (known after apply)
     }
 
+  # helm_release.cert_manager[0] will be created
+  + resource "helm_release" "cert_manager" {
+      + atomic                     = false
+      + chart                      = "cert-manager"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "cert-manager"
+      + namespace                  = "cert-manager"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + repository                 = "https://charts.jetstack.io/"
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + verify                     = false
+      + version                    = "v0.13.0"
+      + wait                       = true
+
+      + set {
+          + name  = "global.podSecurityPolicy.enabled"
+          + value = "false"
+        }
+      + set {
+          + name  = "global.rbac.create"
+          + value = "true"
+        }
+      + set {
+          + name  = "securityContext.enabled"
+          + value = "true"
+        }
+      + set {
+          + name  = "serviceAccount.create"
+          + value = "true"
+        }
+    }
+
+  # helm_release.cert_manager_crd[0] will be created
+  + resource "helm_release" "cert_manager_crd" {
+      + atomic                     = false
+      + chart                      = "cert-manager-crd"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "cert-manager-crd"
+      + namespace                  = "cert-manager-crd"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + repository                 = "https://taitounited.github.io/taito-charts/"
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + verify                     = false
+      + version                    = "0.13.0"
+      + wait                       = true
+    }
+
+  # helm_release.letsencrypt_issuer[0] will be created
+  + resource "helm_release" "letsencrypt_issuer" {
+      + atomic                     = false
+      + chart                      = "./letsencrypt-issuer"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "letsencrypt-issuer"
+      + namespace                  = "cert-manager"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + verify                     = false
+      + version                    = "0.1.0"
+      + wait                       = true
+
+      + set {
+          + name  = "email"
+          + value = "jasper@imwz.io"
+        }
+    }
+
+  # helm_release.mysql_proxy[0] will be created
+  + resource "helm_release" "mysql_proxy" {
+      + atomic                     = false
+      + chart                      = "socat-tunneller"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "smt1_mysql"
+      + namespace                  = "db-proxy"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + repository                 = "https://kubernetes-charts.storage.googleapis.com/"
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + verify                     = false
+      + version                    = "0.1.0"
+      + wait                       = false
+
+      + set {
+          + name  = "tunnel.host"
+          + value = (known after apply)
+        }
+      + set {
+          + name  = "tunnel.port"
+          + value = (known after apply)
+        }
+    }
+
+  # helm_release.nginx_ingress[0] will be created
+  + resource "helm_release" "nginx_ingress" {
+      + atomic                     = false
+      + chart                      = "nginx-ingress"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "nginx-ingress"
+      + namespace                  = "nginx-ingress"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + repository                 = "https://kubernetes-charts.storage.googleapis.com/"
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + verify                     = false
+      + version                    = "1.26.2"
+      + wait                       = false
+
+      + set {
+          + name  = "controller.ingressClass"
+          + value = "nginx-class-1"
+        }
+      + set {
+          + name  = "controller.replicaCount"
+          + value = "2"
+        }
+      + set {
+          + name  = "controller.service.externalTrafficPolicy"
+          + value = "Local"
+        }
+      + set {
+          + name  = "podSecurityPolicy.enabled"
+          + value = "false"
+        }
+      + set {
+          + name  = "rbac.create"
+          + value = "true"
+        }
+      + set {
+          + name  = "serviceAccount.create"
+          + value = "true"
+        }
+    }
+
   # null_resource.cert_manager_crd_wait will be created
   + resource "null_resource" "cert_manager_crd_wait" {
       + id       = (known after apply)
       + triggers = {
-          + "cert_manager_version" = "0.11.0"
-          + "helm_enabled"         = "false"
+          + "cert_manager_version" = "0.13.0"
+          + "helm_enabled"         = "true"
         }
     }
 
-Plan: 5 to add, 0 to change, 0 to destroy.
-
-------------------------------------------------------------------------
-
-Note: You didn't specify an "-out" parameter to save this plan, so Terraform
-can't guarantee that exactly these actions will be performed if
-"terraform apply" is subsequently run.
+Plan: 10 to add, 0 to change, 0 to destroy.
 ```
 
 ## Digital Ocean Kubernetes
@@ -188,3 +387,27 @@ Slug            Kubernetes Version
 ```
 
 We would use `1.17.5-do.0`
+
+## Terraform Helm Nginx Ingress
+
+[source](https://www.terraform.io/docs/providers/kubernetes/r/ingress.html)
+
+example 
+
+```
+resource "kubernetes_ingress" "example_ingress" {
+  metadata {
+    name = "example-ingress"
+  }
+
+  spec {
+    backend {
+      service_name = "MyApp1"
+      service_port = 8080
+    }
+
+    rule {
+      http {
+        path {
+..
+```
