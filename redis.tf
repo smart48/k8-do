@@ -1,6 +1,6 @@
 # https://www.terraform.io/docs/providers/do/r/database_cluster.html
 
-resource "digitalocean_database_cluster" "redis-base" {
+resource "digitalocean_database_cluster" "redis" {
   count      = length(var.redis_instances)
 
   name       = var.redis_instances[count.index]
