@@ -57,3 +57,25 @@ resource "helm_release" "mysql_proxy" {
     value = digitalocean_database_cluster.mysql[count.index].port
   }
 }
+
+resource "helm_release" "redis_proxy" {
+  depends_on = [digitalocean_kubernetes_cluster.kubernetes]
+  count      = var.helm_enabled ? length(var.redis_instances) : 0
+
+  name       = var.redis_instances[count.index]
+  namespace  = "db-proxy"
+  repository = "https://kubernetes-charts.storage.googleapis.com/"
+  chart      = "socat-tunneller"
+  version    = local.socat_tunneler_version
+  wait       = false
+
+  set {
+    name  = "tunnel.host"
+    value = digitalocean_database_cluster.redis[count.index].private_host
+  }
+
+  set {
+    name  = "tunnel.port"
+    value = digitalocean_database_cluster.redis[count.index].port
+  }
+}
