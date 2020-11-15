@@ -36,3 +36,11 @@ resource "digitalocean_kubernetes_cluster" "kubernetes" {
     prevent_destroy = true
   }
 }
+
+# Create a new container registry
+# https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/container_registry
+# Smart48 Added
+resource "digitalocean_container_registry" "container_registry" {
+  name                   = "var.kubernetes_registry_name"
+  subscription_tier_slug = "var.kubernetes_registry_tier"
+}
