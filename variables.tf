@@ -127,6 +127,18 @@ variable "kubernetes_max_nodes" {
   description = "maximum number of nodes."
 }
 
+variable "kubernetes_registry_name" {
+  type        = string
+  default     = "Smart48"
+  description = "container registry name."
+}
+
+variable "kubernetes_registry_tier" {
+  type        = string
+  default     = "basic"
+  description = "container registry tier."
+}
+
 /* Postgres */
 
 variable "postgres_instances" {
